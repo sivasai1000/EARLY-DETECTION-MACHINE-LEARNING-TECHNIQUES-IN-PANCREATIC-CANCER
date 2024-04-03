@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Analysis</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body
+        {
+         background-repeat:no-repeat;
+        background-attached:fixed;
+        background-size:cover;
+        background-image:url({{url_for('static',filename='pics/06.png')}})
+
+        }
+
+        h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .analysis {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .analysis h2 {
+            margin-top: 0;
+        }
+        .results {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .results p {
+            margin: 5px 0;
+        }
+          .navbar{
+    padding :8px;
+}
+.navdiv{
+    display: flex; align-items: center; justify-content: space-between;
+}
+.logo header{
+    font-size: 15px; font-weight: 600; color: black;
+}
+li{
+    list-style: none; display: inline-block;
+}
+li a{
+    color: black; font-size: 18px; font-weight: bold; margin-right: 25px;
+}
+     
+    </style>
+</head>
+<body>
+ <nav class="navbar">
+    <div class="navdiv">
+<div class="logo">
+    <header>
+        <h1>Performace Analysis</h1>
+    </header>
+</div>
+        <ul>
+
+               <li> <a href="/home" class="btn btn-info btn-lg">Home</a></li>
+               <li> <a href="/predict" class="btn btn-primary  btn-lg">Predict</a></li>
+                <li><a href="/performance_analysis" class="btn btn-primary btn-lg">Performance analysis</a></li>
+                <li><a href="/Abouting" class="btn btn-primary  btn-lg">About</a></li>
+
+        </ul>
+        </div>
+	</nav>
+ <br>
+
+    <div class="container">
+        <div class="analysis">
+            <h2>Random Forest Classifier</h2>
+            <div class="results">
+                <p>Accuracy: 86%</p>
+                <p>Precision: 85%</p>
+                <p>Recall: 85%</p>
+                <p>F1 Score: 85%</p>
+            </div>
+        </div>
+        <div class="analysis">
+            <h2>Extra Trees Classifier</h2>
+            <div class="results">
+                <p>Accuracy: 82.16%</p>
+                <p>Precision: 84%</p>
+                <p>Recall: 84%</p>
+                <p>F1 Score: 83%</p>
+            </div>
+        </div>
+        <div class="analysis">
+            <h2>Decision Tree Classifier</h2>
+            <div class="results">
+                <p>Accuracy: 81.03%</p>
+                <p>Precision: 80%</p>
+                <p>Recall: 80%</p>
+                <p>F1 Score: 80%</p>
+            </div>
+        </div>
+        <div class="analysis">
+            <h2>Support Vector Classifier</h2>
+            <div class="results">
+                <p>Accuracy: 50%</p>
+                <p>Precision: 53%</p>
+                <p>Recall: 52%</p>
+                <p>F1 Score: 49%</p>
+            </div>
+        </div>
+
+        <div class="analysis">
+            <h2>Comparsion Of Algorithms</h2>
+            <div class="results">
+                <img src="{{url_for('static',filename='pics/algorithms.png')}}" alt="unloaded" />
+            </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h2>Data Set Analysis</h2>
+            <div class="analysis">
+                <h2>Sex Analysis</h2>
+                <div class="results">
+                    <img src="{{url_for('static',filename='pics/sex.png')}}" />
+                </div>
+                <div class="analysis">
+                    <h2>Diagnosis Analysis</h2>
+                    <div class="results">
+                        <img src="{{url_for('static',filename='pics/diagnosis.png')}}" alt="unloaded" />
+                    </div>
+
+
+
+            </div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pancreatic Cancer Detection with Machine Learning</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: justify;
+        }
+        body
+        {
+         background-repeat:no-repeat;
+        background-attached:fixed;
+        background-size:cover;
+        background-image:url({{url_for('static',filename='pics/06.png')}})
+
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .content {
+
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .content h2 {
+            margin-top: 0;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .navbar{
+    padding :8px;
+}
+.navdiv{
+    display: flex; align-items: center; justify-content: space-between;
+}
+.logo header{
+    font-size: 15px; font-weight: 600; color: black;
+}
+li{
+    list-style: none; display: inline-block;
+}
+li a{
+    color: black; font-size: 18px; font-weight: bold; margin-right: 25px;
+}
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="navdiv">
+<div class="logo">
+    <header>
+        <h1>ABOUT</h1>
+    </header>
+</div>
+        <ul>
+
+               <li> <a href="/home" class="btn btn-info btn-lg">Home</a></li>
+               <li> <a href="/predict" class="btn btn-primary  btn-lg">Predict</a></li>
+                <li><a href="/performance_analysis" class="btn btn-primary btn-lg">Performance analysis</a></li>
+                <li><a href="/Abouting" class="btn btn-primary  btn-lg">About</a></li>
+
+        </ul>
+        </div>
+	</nav>
+ <div class="container">
+        <div class="content">
+            <h2>Introduction</h2>
+            <p>Pancreatic cancer is one of the most lethal forms of cancer, often diagnosed at an advanced stage with limited treatment options. Early detection plays a crucial role in improving patient outcomes. Pancreatic cancer is a serious illness that starts in the pancreas, an important organ in your body. It's tricky because it often doesn't show clear signs early on, making it hard to catch and treat in its early stages. By the time it's found, it's usually already spread, which makes it tougher to treat. Even with treatment, it's often hard to beat, with only a small percentage of people surviving past five years after diagnosis. Scientists are working hard to find better ways to detect it sooner and develop treatments that work better. But it's a tough challenge that requires a lot of research and innovation to overcome.Machine learning algorithms have shown promising results in aiding the early detection of pancreatic cancer by analyzing medical data.</p>
+        </div>
+        
+        <div class="content">
+            <h2>Benefits of Machine Learning in Pancreatic Cancer Detection</h2>
+            <p><strong>Early Detection:</strong> Machine learning algorithms can identify subtle signs of pancreatic cancer in medical images that may not be easily recognizable by human radiologists, enabling early intervention and treatment.</p>
+            <p><strong>Accuracy:</strong> By analyzing a large volume of imaging data and learning complex patterns, machine learning models can achieve high levels of accuracy in pancreatic cancer detection, reducing false positives and false negatives.</p>
+            <p><strong>Personalized Medicine:</strong> Machine learning algorithms can also assist in tailoring treatment plans based on individual patient characteristics and disease progression, leading to more personalized and effective therapies.</p>
+        </div>
+        <div class="content">
+            <h2>Dataset Details</h2>
+
+<table>
+  <tr>
+    <th>Column name</th>
+    <th>Original column name</th>
+    <th>Details</th>
+  </tr>
+  <tr>
+    <td>sample_id</td>
+    <td>Sample ID</td>
+    <td>Unique string identifying each subject</td>
+  </tr>
+  <tr>
+    <td>patient_cohort</td>
+    <td>Patient's Cohort</td>
+    <td>Cohort 1, previously used samples; Cohort 2, newly added samples</td>
+  </tr>
+  <tr>
+    <td>sample_origin</td>
+    <td>Sample Origin</td>
+    <td>BPTB: Barts Pancreas Tissue Bank, London, UK; ESP: Spanish National Cancer Research Centre, Madrid, Spain; LIV: Liverpool University, UK; UCL: University College London, UK</td>
+  </tr>
+  <tr>
+    <td>age</td>
+    <td>Age</td>
+    <td>Age in years</td>
+  </tr>
+  <tr>
+    <td>sex</td>
+    <td>Sex</td>
+    <td>M = male, F = female</td>
+  </tr>
+  <tr>
+    <td>diagnosis</td>
+    <td>Diagnosis (1=Control, 2=Benign, 3=PDAC)</td>
+    <td>1 = control (no pancreatic disease), 2 = benign hepatobiliary disease (119 of which are chronic pancreatitis); 3 = Pancreatic ductal adenocarcinoma, i.e. pancreatic cancer</td>
+  </tr>
+  <tr>
+    <td>stage</td>
+    <td>Stage</td>
+    <td>For those with pancreatic cancer, what stage was it? One of IA, IB, IIA, IIIB, III, IV</td>
+  </tr>
+  <tr>
+    <td>benign_sample_diagnosis</td>
+    <td>Benign Samples Diagnosis</td>
+    <td>For those with a benign, non-cancerous diagnosis, what was the diagnosis?</td>
+  </tr>
+  <tr>
+    <td>plasma_CA19_9</td>
+    <td>Plasma CA19-9 U/ml</td>
+    <td>Blood plasma levels of CA 19–9 monoclonal antibody that is often elevated in patients with pancreatic cancer. Only assessed in 350 patients (one goal of the study was to compare various CA 19-9 cutpoints from a blood sample to the model developed using urinary samples).</td>
+  </tr>
+  <tr>
+    <td>creatinine</td>
+    <td>Creatinine mg/ml</td>
+    <td>Urinary biomarker of kidney function</td>
+  </tr>
+  <tr>
+    <td>LYVE1</td>
+    <td>LYVE1 ng/ml</td>
+    <td>Urinary levels of Lymphatic vessel endothelial hyaluronan receptor 1, a protein that may play a role in tumor metastasis</td>
+  </tr>
+  <tr>
+    <td>REG1B</td>
+    <td>REG1B ng/ml</td>
+    <td>Urinary levels of a protein that may be associated with pancreas regeneration.</td>
+  </tr>
+  <tr>
+    <td>TFF1</td>
+    <td>TFF1 ng/ml</td>
+    <td>Urinary levels of Trefoil Factor 1, which may be related to regeneration and repair of the urinary tract</td>
+  </tr>
+  <tr>
+    <td>REG1A</td>
+    <td>REG1A ng/ml</td>
+    <td>Urinary levels of a protein that may be associated with pancreas regeneration. Only assessed in 306 patients (one goal of the study was to assess REG1B vs REG1A)</td>
+  </tr>
+</table>
+     </div>
+    </div>
+
+</body>
+</html>
